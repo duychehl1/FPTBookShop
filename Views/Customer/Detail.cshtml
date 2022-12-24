@@ -1,0 +1,47 @@
+﻿@model BookShop.Models.Book
+@{
+    ViewData["Title"] = "Details";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<h2>@Html.DisplayFor(model => model.Title)</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.Author)</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PublicDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PublicDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoryID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CategoryID)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dd class="col-sm-10">
+            <img src="~/images/@Html.DisplayFor(model => model.PictureName)" height="200" width="140" />
+
+        </dd>
+    </dl>
+
+    <form asp-action="Index">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="AddToCard" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

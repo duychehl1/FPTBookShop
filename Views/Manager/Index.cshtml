@@ -1,0 +1,125 @@
+﻿@model IEnumerable<BookShop.Models.Book>
+@{
+	ViewData["Title"] = "Index";
+	 Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+<!-- Main Navigation -->
+
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<h2>Book</h2>
+<br />
+<!-- Slider -->
+<a asp-action="Create" class="btn btn-success">Add new Product</a>
+<br />
+<table class="table">
+	<thead>
+		<tr>
+			<th>
+				Id
+			</th>
+			<th>
+				Title
+			</th>
+			<th>
+				Author
+			</th>
+			<th>
+				PublicDate
+			</th>
+			<th>
+				CategoryID
+			</th>
+			<th>
+				Price
+			</th>
+			<th></th>
+			<th></th>
+
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Id)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Title)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Author)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PublicDate)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.CategoryID)
+				</td>
+				
+				<td>
+					@Html.DisplayFor(modelItem => item.Price)
+				</td>
+				<td>
+					<img src="~/images/@item.PictureName" alt="" height="60" width="40">
+				</td>
+				<td>
+					<a asp-controller="Manager" asp-action="Edit" asp-route-id="@item.Id"  class="btn btn-default">     <i class="fa fa-pencil"></i> Edit </a> |
+					<a asp-controller="Manager" asp-action="Delete" asp-route-id="@item.Id"  class="btn btn-default">     <i class="fa fa-trash"></i> Delete </a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+
+
+<!-- Benefit -->
+
+<div class="benefit">
+	<div class="container">
+		<div class="row benefit_row">
+			<div class="col-lg-3 benefit_col">
+				<div class="benefit_item d-flex flex-row align-items-center">
+					<div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+					<div class="benefit_content">
+						<h6>free shipping</h6>
+						<p>Suffered Alteration in Some Form</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 benefit_col">
+				<div class="benefit_item d-flex flex-row align-items-center">
+					<div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+					<div class="benefit_content">
+						<h6>cach on delivery</h6>
+						<p>The Internet Tend To Repeat</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 benefit_col">
+				<div class="benefit_item d-flex flex-row align-items-center">
+					<div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+					<div class="benefit_content">
+						<h6>45 days return</h6>
+						<p>Making it Look Like Readable</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-3 benefit_col">
+				<div class="benefit_item d-flex flex-row align-items-center">
+					<div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+					<div class="benefit_content">
+						<h6>opening all week</h6>
+						<p>8AM - 09PM</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

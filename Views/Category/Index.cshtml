@@ -1,0 +1,48 @@
+﻿@model IEnumerable<BookShop.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<h2>Category</h2>
+<br />
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Add new Category</a>
+</p>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => item.CategoryID)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => item.CategoryName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-categoryid="@item.CategoryID">Edit</a> |
+                    <a asp-action="Delete" asp-route-categoryid="@item.CategoryID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

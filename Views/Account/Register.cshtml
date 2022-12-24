@@ -1,0 +1,94 @@
+﻿@model BookShop.Models.Account;
+@{
+	Layout = "~/Views/Shared/_RegisterLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+  background: url('https://images.pexels.com/photos/1018136/pexels-photo-1018136.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  
+}
+
+.card-img-left {
+  width: 45%;
+  background: url('https://images.pexels.com/photos/2846814/pexels-photo-2846814.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+  background-size: cover;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+
+    </style>
+</head>
+
+    <body>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 col-xl-9 mx-auto">
+              <div class="card flex-row my-5 border-0 shadow rounded-3 overflow-hidden">
+                <div class="card-img-left d-none d-md-flex">
+                  <!-- Background image for card set in CSS! -->
+                </div>
+                <div class="card-body p-4 p-sm-5">
+                  <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
+
+                  <form enctype="multipart/form-data" asp-action="Register">
+                      <i style="color: red;">@ViewBag.error</i>
+                    <div class="form-floating mb-3">
+                      <input  asp-for="Email" type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
+                      <label  asp-for="Email" for="floatingInputEmail">Email address</label> </br>
+                       <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+      
+                    <div class="form-floating mb-3">
+                      <input  asp-for="Password" type="password" class="form-control" id="floatingPassword" placeholder="Password" onkeyup='check();'>
+                      <label  asp-for="Password" for="floatingPassword">Password</label> </br>
+                      <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+      
+                    <div class="form-floating mb-3">
+                      <input  type="password" class="form-control" id="floatingPasswordConfirm" placeholder="Confirm Password" onkeyup='check();' required>
+                      <label for="floatingPasswordConfirm">Confirm Password</label>
+                      <span id="message"></span>
+                    </div>
+
+                      <input  asp-for="Role" type="text" class="form-control" value="CUSTOMER" hidden>
+      
+                    <div class="d-grid mb-2">
+                      <button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="submit">Register</button>
+                    </div>
+                    <hr class="my-4">
+                    <a class="d-block text-center mt-2 small" asp-controller="Account" asp-action="Login">Have an account? Sign In</a>                 
+                  </form>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         <script>               
+                var check = function() {
+                  if (document.getElementById('floatingPassword').value ==
+                    document.getElementById('floatingPasswordConfirm').value) {
+                    document.getElementById('message').style.color = 'green';
+                    document.getElementById('message').innerHTML = 'matching';
+                  } else {
+                    document.getElementById('message').style.color = 'red';
+                    document.getElementById('message').innerHTML = 'not matching';
+                  }
+                }
+         </script>
+    </body>
+<html/>

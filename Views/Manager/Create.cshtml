@@ -1,0 +1,86 @@
+﻿
+@model BookShop.Models.Book;
+
+@{
+   ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_ManagerLayout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container col-md-6 mt-3 text-center">
+    <h2 class="text text-success mb-3">Add a new Book</h2>
+     <form enctype="multipart/form-data" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublicDate" class="control-label"></label>
+                <input asp-for="PublicDate" class="form-control" />
+                <span asp-validation-for="PublicDate" class="text-danger"></span>
+            </div>
+
+             <div class="form-group">
+                <label asp-for="CategoryID" class="control-label">Category</label>
+                <select asp-for="CategoryID">
+                @foreach (var item in ViewBag.Categories)
+                {
+                    <option value="@item.CategoryID">@item.CategoryName</option>
+                }
+                </select>
+                <span asp-validation-for="CategoryID" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for=" Price" class="control-label"></label>
+                <input asp-for=" Price" class="form-control" />
+                <span asp-validation-for=" Price" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+
+                <label asp-for="Picture" class="control-label">
+                    Picture
+                </label>
+                <br />
+                <input asp-for="Picture" type="file" id="myFile" class="form-control">
+                <br />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+             </div>
+        
+            <div class="form-group mt-3">
+                <input type="submit" value="Add" class="btn btn-primary" />
+            </div>
+
+        </form>
+</div> 
+<div class="row">
+    <div class="col-md-4">
+       
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section scripts{
+    <script>
+        // Add the following code if you want the name of the file appear on select
+        $(".custom-file-input").on("change", function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+    
+}
+
